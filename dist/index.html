@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/a3673060fd.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>To-Do-List</title>
+  <script defer src="index.bundle.js"></script></head>
+  <body>
+    <div class="container">
+      <div class="todolist_container">
+        <h2>Today's To Do<i class="fa-solid fa-arrows-rotate"></i></h2>
+
+        <form id="task-form" class="input" action="post">
+          <input
+            type="text"
+            class="input-todo"
+            name="new-task"
+            id="new_task"
+            placeholder="Add to your List..."
+            required
+          /><button id="task_submit" type="submit">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          </button>
+        </form>
+        <ul class="todo_list">
+          <li>
+            <input type="checkbox" /> wash the dishes
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </li>
+          <li>
+            <input type="checkbox" /> complete To Do list project
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </li>
+        </ul>
+        <div class="clear_list">
+          <button class="clear_btn" type="button">Clear all completed</button>
+        </div>
+      </div>
+
+      <i class="fa-solid fa-trash-can"></i>
+    </div>
+  </body>
+</html>
