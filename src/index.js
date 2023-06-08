@@ -1,8 +1,11 @@
 import './styles.css';
 import { loadTasks } from './modules/taskFunctions.js';
-import { renderTaskList, addTask } from './modules/renderFunctions.js';
+import renderTaskList from './modules/renderFunctions.js';
+import addTask from './modules/addTask.js';
+import clearAllCompleted from './modules/completeStatus.js';
 
 const taskForm = document.getElementById('task-form');
+const clearAllBtn = document.getElementById('clear-all-btn');
 
 taskForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -17,3 +20,5 @@ taskForm.addEventListener('submit', (event) => {
 
 loadTasks();
 renderTaskList();
+
+clearAllBtn.addEventListener('click', clearAllCompleted);
