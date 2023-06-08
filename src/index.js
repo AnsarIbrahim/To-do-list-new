@@ -1,55 +1,19 @@
 import './styles.css';
+import { loadTasks } from './modules/taskFunctions.js';
+import { renderTaskList, addTask } from './modules/renderFunctions.js';
 
-const tasks = [
-  {
-    description: 'wash the Dishes',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'complete To Do list project',
-    completed: false,
-    index: 2,
-  },
-];
+const taskForm = document.getElementById('task-form');
 
-const taskList = () => {
-  const listTask = document.getElementById('task-list');
-  const clearBtn = document.querySelector('.clear_btn');
-  listTask.innerHTML = '';
-  clearBtn.disabled = true;
+taskForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const inputTask = document.getElementById('new_task');
+  const description = inputTask.value.trim();
 
-  tasks.forEach(({ index, description, completed }) => {
-    const listItemHTML = `
-        <li id="${index}" class="${completed ? 'completed' : ''}">
-          <input type="checkbox" class="input_todo" ${
-  completed ? 'checked' : ''
-} />
-          <span class="text_input">${description}</span>
-          <span class="dots_btn"><i class="fa-solid fa-ellipsis-vertical dots"></i></span>
-        </li>
-      `;
+  if (description !== '') {
+    addTask(description);
+    inputTask.value = '';
+  }
+});
 
-    listTask.insertAdjacentHTML('beforeend', listItemHTML);
-  });
-
-  const updateClearButtonStatus = () => {
-    const clearBtn = document.querySelector('.clear_btn');
-    const checkboxes = document.querySelectorAll('.input_todo');
-    const allChecked = [...checkboxes].every((checkbox) => checkbox.checked);
-    clearBtn.disabled = !allChecked;
-  };
-
-  const handleCheckboxClick = () => {
-    updateClearButtonStatus();
-  };
-
-  const checkboxes = document.querySelectorAll('.input_todo');
-  checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener('click', handleCheckboxClick);
-  });
-
-  updateClearButtonStatus();
-};
-
-taskList();
+loadTasks();
+renderTaskList();

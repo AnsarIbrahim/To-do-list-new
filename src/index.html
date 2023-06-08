@@ -14,6 +14,7 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+
     <title>To-Do-List</title>
   </head>
   <body>
@@ -25,7 +26,7 @@
               Today's To Do<i class="fa-solid fa-arrows-rotate refresh"></i>
             </h2>
 
-            <form id="task-form" class="input" action="POST">
+            <form id="task-form" class="input">
               <div class="input_list">
                 <input
                   type="text"
@@ -43,7 +44,9 @@
               <!-- This is belong to JS -->
             </ul>
             <div class="clear_list">
-              <button class="clear_btn" disabled>Clear all completed</button>
+              <button id="clear-all-btn" class="clear_btn" disabled>
+                Clear all completed
+              </button>
             </div>
           </div>
         </div>
