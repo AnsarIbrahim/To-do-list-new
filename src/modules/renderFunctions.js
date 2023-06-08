@@ -36,7 +36,6 @@ const makeTaskEditable = (index, descriptionSpan) => {
   input.focus();
 };
 
-// Function to render the task list
 const renderTaskList = () => {
   const deleteTask = (index) => {
     tasks.splice(index, 1);
