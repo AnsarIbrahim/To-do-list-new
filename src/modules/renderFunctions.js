@@ -32,7 +32,7 @@ export default function renderTaskList() {
       }
     };
 
-    checkbox.addEventListener('click', () => {
+    checkbox.addEventListener('change', () => {
       const taskIndex = index - 1;
       toggleTaskCompleted(taskIndex);
     });
