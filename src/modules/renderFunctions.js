@@ -6,12 +6,6 @@ import {
 } from './taskFunctions.js';
 
 const taskList = document.getElementById('task-list');
-const clearAllBtn = document.getElementById('clear-all-btn');
-
-const updateClearAllButton = () => {
-  const completedTasks = tasks.some((task) => task.completed);
-  clearAllBtn.disabled = !completedTasks;
-};
 
 const makeTaskEditable = (index, descriptionSpan) => {
   const input = document.createElement('input');
@@ -44,14 +38,13 @@ const makeTaskEditable = (index, descriptionSpan) => {
 
 // Function to render the task list
 const renderTaskList = () => {
-  taskList.innerHTML = '';
-
-  function deleteTask(index) {
+  const deleteTask = (index) => {
     tasks.splice(index, 1);
     updateTaskIndexes();
     saveTasks();
     renderTaskList();
-  }
+  };
+  taskList.innerHTML = '';
 
   tasks.forEach(({ index, description, completed }) => {
     const listItem = document.createElement('li');
@@ -87,17 +80,10 @@ const renderTaskList = () => {
     const deleteButton = document.createElement('button');
     deleteButton.className = 'delete_btn';
     deleteButton.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
-    deleteButton.addEventListener('click', (event) => {
-      const listItem = event.target.parentNode;
-      const isSelected = listItem.classList.contains('selected');
-      const task = tasks.find((task) => task.index === index);
 
-      if (isSelected || (task && task.completed)) {
-        const taskIndex = tasks.findIndex((task) => task.index === index);
-        if (taskIndex !== -1) {
-          deleteTask(taskIndex);
-        }
-      }
+    deleteButton.addEventListener('click', () => {
+      const taskIndex = index - 1;
+      deleteTask(taskIndex);
     });
 
     if (completed) {
@@ -110,23 +96,8 @@ const renderTaskList = () => {
 
     taskList.appendChild(listItem);
   });
-  const clearAllCompleted = () => {
-    const completedTasks = tasks.filter((task) => task.completed);
-    completedTasks.forEach((task) => {
-      const taskIndex = tasks.findIndex((t) => t.index === task.index);
-      if (taskIndex !== -1) {
-        deleteTask(taskIndex);
-      }
-    });
-
-    renderTaskList();
-  };
-
-  clearAllBtn.addEventListener('click', () => clearAllCompleted());
-
-  updateClearAllButton();
 };
-// Function to add a new task
+
 const addTask = (description) => {
   const newTask = {
     description,
