@@ -77,7 +77,7 @@
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 
-- [Live Demo Link](Coming soon .....)
+- [Live Demo Link](https://ansaribrahim.github.io/To-do-list-new/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -124,7 +124,7 @@ To-Do-List
 ### Deployment
 
 - You can deploy this project using:
-  - Type cd ``` To-do-list-newt ```
+  - Type cd ``` To-do-list-new ```
   - open index.html file in the browser
 
 
