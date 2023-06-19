@@ -1,12 +1,6 @@
 import renderTaskList from './renderFunctions.js';
-import { tasks, updateTaskIndexes, saveTasks } from './taskFunctions.js';
-
-const deleteTask = (index) => {
-  tasks.splice(index, 1);
-  updateTaskIndexes();
-  saveTasks();
-  renderTaskList();
-};
+import { tasks } from './taskFunctions.js';
+import deleteTask from './deleteTask.js';
 
 export default function clearAllCompleted() {
   const completedTasks = tasks.filter((task) => task.completed);

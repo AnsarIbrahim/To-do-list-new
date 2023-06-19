@@ -2,17 +2,15 @@ import { tasks, saveTasks, updateTaskIndexes } from './taskFunctions.js';
 import makeTaskEditable from './editTask.js';
 import updateClearAllButton from './clearAll.js';
 
-const taskList = document.getElementById('task-list');
-
 export default function renderTaskList() {
-  taskList.innerHTML = '';
-
   const deleteTask = (index) => {
     tasks.splice(index, 1);
     updateTaskIndexes();
     saveTasks();
     renderTaskList();
   };
+  const taskList = document.getElementById('task-list');
+  taskList.innerHTML = '';
 
   tasks.forEach(({ index, description, completed }) => {
     const listItem = document.createElement('li');
